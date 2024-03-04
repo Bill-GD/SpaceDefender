@@ -26,7 +26,6 @@ Upgrades will hopefully spice up the game.
 ## Combat
 - Aim with mouse.
 - Shoot with LMB.
-- Maybe change weapon with wheel.
 - Knocked back when hit.
 - Shield takes damage when active, ship takes damage when shield's down, shield can regenerate.
 - While dashing/boosting, gain iframes/reduced damage, can damage enemies.
@@ -45,13 +44,23 @@ Upgrades may include these:
 - Splitshot
 - Multishot
 - Turret
-- Laser
 - Homing projectile
 - Dash/Boost (idk)
 - Stats: damage, hp, speed, armor/shield, kb resist
 
+## Weapons
+There may be multiple weapons unlocked by collecting upgrades.
+Maybe change weapon with wheel.
+- Normal blaster
+- Double blaster
+- Missile launcher
+- Laser
+- Energy ball (maybe homing, slow)
+
 # Visual
-I've been trying out shader recently, maybe I'll try it.
 - When low on health, red vinette effect around screen.
+- Simple sprites (I'm not good at that)
+- Characters flash when hit.
+- Maybe Particles when moving, projectiles trail.
 
 # Implementation
