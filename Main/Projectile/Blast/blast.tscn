@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0ps1s4n6adt8"]
+[gd_scene load_steps=6 format=3 uid="uid://c0ps1s4n6adt8"]
 
 [ext_resource type="PackedScene" uid="uid://bs6gstpj7wr25" path="res://Main/Projectile/projectile.tscn" id="1_udw1y"]
 [ext_resource type="Script" path="res://Main/Projectile/Blast/blast.gd" id="2_222tq"]
@@ -8,6 +8,10 @@
 radius = 2.0
 height = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbj3p"]
+resource_local_to_scene = true
+radius = 31.0
+
 [node name="Blast" instance=ExtResource("1_udw1y")]
 z_index = -1
 script = ExtResource("2_222tq")
@@ -16,6 +20,9 @@ script = ExtResource("2_222tq")
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_3m7is")
 
-[node name="Sprite" parent="." index="1"]
+[node name="HomingCollision" parent="HomingRange" index="0"]
+shape = SubResource("CircleShape2D_qbj3p")
+
+[node name="Sprite" parent="." index="2"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_uvjpu")

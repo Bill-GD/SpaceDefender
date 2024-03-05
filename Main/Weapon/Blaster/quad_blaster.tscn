@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://hspr326ra2d1"]
+
+[ext_resource type="PackedScene" uid="uid://dpnmi83p5omse" path="res://Main/Weapon/weapon_base.tscn" id="1_g45fx"]
+[ext_resource type="Texture2D" uid="uid://wd3td4g868y0" path="res://Assets/Weapons/quad_blaster.png" id="2_so3dl"]
+[ext_resource type="Script" path="res://Main/Weapon/Blaster/quad_blaster.gd" id="3_8s63j"]
+[ext_resource type="PackedScene" uid="uid://c0ps1s4n6adt8" path="res://Main/Projectile/Blast/blast.tscn" id="4_ur64s"]
+
+[node name="QuadBlaster" instance=ExtResource("1_g45fx")]
+texture = ExtResource("2_so3dl")
+script = ExtResource("3_8s63j")
+ammo = ExtResource("4_ur64s")
+
+[node name="ShootLocation" type="Node2D" parent="." index="1"]
+
+[node name="Point1" type="Marker2D" parent="ShootLocation" index="0"]
+position = Vector2(172, -82)
+
+[node name="Point2" type="Marker2D" parent="ShootLocation" index="1"]
+position = Vector2(172, 82)
+
+[node name="Point3" type="Marker2D" parent="ShootLocation" index="2"]
+position = Vector2(-43, -245)
+
+[node name="Point4" type="Marker2D" parent="ShootLocation" index="3"]
+position = Vector2(-43, 245)

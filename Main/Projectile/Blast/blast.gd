@@ -4,6 +4,6 @@ extends Projectile
 func _ready() -> void:
 	super()
 
-func _process(delta) -> void:
+func _physics_process(delta) -> void:
 	super(delta)
 	pass

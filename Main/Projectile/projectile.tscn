@@ -1,12 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs6gstpj7wr25"]
+[gd_scene load_steps=3 format=3 uid="uid://bs6gstpj7wr25"]
 
 [ext_resource type="Script" path="res://Main/Projectile/projectile.gd" id="1_mi18y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nougf"]
+resource_local_to_scene = true
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_mi18y")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 
+[node name="HomingRange" type="Area2D" parent="."]
+
+[node name="HomingCollision" type="CollisionShape2D" parent="HomingRange"]
+shape = SubResource("CircleShape2D_nougf")
+
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = -1
 scale = Vector2(0.5, 0.5)
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="HomingRange" to="." method="_on_homing_range_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
