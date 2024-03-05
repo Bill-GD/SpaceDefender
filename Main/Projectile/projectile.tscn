@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bs6gstpj7wr25"]
 
-[ext_resource type="Script" path="res://Main/Weapon/projectile.gd" id="1_mi18y"]
+[ext_resource type="Script" path="res://Main/Projectile/projectile.gd" id="1_mi18y"]
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_mi18y")
@@ -8,3 +8,5 @@ script = ExtResource("1_mi18y")
 [node name="Collision" type="CollisionShape2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.5, 0.5)

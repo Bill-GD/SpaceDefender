@@ -10,5 +10,4 @@ func die() -> void:
 	queue_free()
 
 func take_damage(damage: float) -> void:
-	basic_stats.health -= damage
 	pass

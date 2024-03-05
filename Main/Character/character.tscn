@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cybe25aryci6c"]
 
 [ext_resource type="Script" path="res://Main/Character/character.gd" id="1_3yfiy"]
-[ext_resource type="PackedScene" uid="uid://biff2eb8dx7ma" path="res://Main/Weapon/weapon.tscn" id="2_64vfa"]
+[ext_resource type="PackedScene" uid="uid://dxbymhpcvyu2v" path="res://Main/Effect/trail.tscn" id="3_do6gl"]
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_3yfiy")
@@ -9,6 +9,13 @@ script = ExtResource("1_3yfiy")
 [node name="Collision" type="CollisionShape2D" parent="."]
 
 [node name="CharacterSprite" type="Sprite2D" parent="."]
+z_index = 1
 scale = Vector2(0.05, 0.05)
 
-[node name="Weapon" parent="." instance=ExtResource("2_64vfa")]
+[node name="Weapon" type="Node2D" parent="."]
+scale = Vector2(0.05, 0.05)
+
+[node name="TrailPosition" type="Marker2D" parent="."]
+show_behind_parent = true
+
+[node name="Trail" parent="TrailPosition" instance=ExtResource("3_do6gl")]

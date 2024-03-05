@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bayf3ef0gkq7f"]
+[gd_scene load_steps=6 format=3 uid="uid://bayf3ef0gkq7f"]
 
 [ext_resource type="Script" path="res://Main/Game/game.gd" id="1_ptkmp"]
 [ext_resource type="Shader" path="res://Main/Game/background.gdshader" id="1_q0nsj"]
 [ext_resource type="PackedScene" uid="uid://c3qxr7ij6q1tf" path="res://Main/Character/Player/player.tscn" id="2_pa43f"]
+[ext_resource type="PackedScene" uid="uid://cuinup4t3opxf" path="res://Main/Character/Enemy/enemy.tscn" id="4_vtow5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dlbe2"]
 shader = ExtResource("1_q0nsj")
@@ -29,3 +30,7 @@ grow_vertical = 2
 [node name="Player" parent="." instance=ExtResource("2_pa43f")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Enemy" parent="." instance=ExtResource("4_vtow5")]
+position = Vector2(482, 300)

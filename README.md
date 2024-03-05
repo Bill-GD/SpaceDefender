@@ -21,7 +21,6 @@ Upgrades will hopefully spice up the game.
 ## Movement
 - Simple WASD movement.
 - Maybe Spacebar to boost/dash in mouse direction.
-- Have momentum.
 
 ## Combat
 - Aim with mouse.

@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck6rngxawsodt"]
+
+[ext_resource type="PackedScene" uid="uid://dpnmi83p5omse" path="res://Main/Weapon/weapon_base.tscn" id="1_li38v"]
+[ext_resource type="Texture2D" uid="uid://bsk6e181e6mh7" path="res://Assets/Weapons/blaster.png" id="1_p3fyx"]
+[ext_resource type="Script" path="res://Main/Weapon/Blaster/blaster.gd" id="2_wfwku"]
+[ext_resource type="PackedScene" uid="uid://c0ps1s4n6adt8" path="res://Main/Projectile/Blast/blast.tscn" id="3_gxkev"]
+
+[node name="Blaster" instance=ExtResource("1_li38v")]
+texture = ExtResource("1_p3fyx")
+script = ExtResource("2_wfwku")
+ammo = ExtResource("3_gxkev")
+
+[node name="Cooldown" parent="." index="0"]
+wait_time = 0.35
+
+[node name="ShootLocation" type="Marker2D" parent="." index="1"]
+position = Vector2(302, 0)

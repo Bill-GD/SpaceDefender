@@ -1,7 +1,7 @@
 class_name Weapon
 extends Node2D
 
-var shoot_locations
+@export var ammo: PackedScene
 
-func shoot() -> void:
+func shoot(direction: Vector2) -> void:
 	pass

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6kos32hif1gi"]
+
+[ext_resource type="PackedScene" uid="uid://dpnmi83p5omse" path="res://Main/Weapon/weapon_base.tscn" id="1_vv5bo"]
+[ext_resource type="Texture2D" uid="uid://c2pb3x3if8lxv" path="res://Assets/Weapons/double_blaster.png" id="2_gjtpm"]
+[ext_resource type="Script" path="res://Main/Weapon/Blaster/double_blaster.gd" id="2_wu65w"]
+[ext_resource type="PackedScene" uid="uid://c0ps1s4n6adt8" path="res://Main/Projectile/Blast/blast.tscn" id="4_jvj8k"]
+
+[node name="DoubleBlaster" instance=ExtResource("1_vv5bo")]
+texture = ExtResource("2_gjtpm")
+script = ExtResource("2_wu65w")
+ammo = ExtResource("4_jvj8k")
+
+[node name="Cooldown" parent="." index="0"]
+wait_time = 0.35
+
+[node name="ShootLocation" type="Node2D" parent="." index="1"]
+
+[node name="Point1" type="Marker2D" parent="ShootLocation" index="0"]
+position = Vector2(172, -82)
+
+[node name="Point2" type="Marker2D" parent="ShootLocation" index="1"]
+position = Vector2(172, 82)

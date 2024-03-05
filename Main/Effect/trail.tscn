@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxbymhpcvyu2v"]
+
+[ext_resource type="Script" path="res://Main/Effect/trail.gd" id="1_gvdla"]
+
+[sub_resource type="Curve" id="Curve_hwjf3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5aebf"]
+offsets = PackedFloat32Array(0, 0.12069, 0.890805, 1)
+colors = PackedColorArray(1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0)
+
+[node name="Trail" type="Line2D"]
+show_behind_parent = true
+width_curve = SubResource("Curve_hwjf3")
+gradient = SubResource("Gradient_5aebf")
+script = ExtResource("1_gvdla")
