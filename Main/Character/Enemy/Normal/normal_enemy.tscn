@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=3 uid="uid://ic4anpi8ge5a"]
+
+[ext_resource type="PackedScene" uid="uid://cuinup4t3opxf" path="res://Main/Character/Enemy/enemy.tscn" id="1_vq6nb"]
+[ext_resource type="Script" path="res://Main/Character/Enemy/Normal/normal_enemy.gd" id="2_12ueh"]
+[ext_resource type="Texture2D" uid="uid://4102kfkc1i3t" path="res://Assets/Characters/player_ship.png" id="3_1t0we"]
+[ext_resource type="Script" path="res://Main/Character/basic_stats.gd" id="3_5knng"]
+[ext_resource type="PackedScene" uid="uid://ck6rngxawsodt" path="res://Main/Weapon/Blaster/blaster.tscn" id="4_km3ho"]
+
+[sub_resource type="Resource" id="Resource_jso8y"]
+script = ExtResource("3_5knng")
+base_speed = 200.0
+base_health = 40.0
+base_damage = 1.0
+base_shield = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vatwg"]
+radius = 8.0
+height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5jbx"]
+height = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sn4y5"]
+resource_local_to_scene = true
+radius = 400.0
+
+[node name="NormalEnemy" instance=ExtResource("1_vq6nb")]
+script = ExtResource("2_12ueh")
+base_stats = SubResource("Resource_jso8y")
+
+[node name="Collision" parent="." index="0"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_vatwg")
+
+[node name="Shape" parent="HurtBox" index="0"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_v5jbx")
+
+[node name="CharacterSprite" parent="." index="2"]
+texture = ExtResource("3_1t0we")
+
+[node name="Blaster" parent="Weapon" index="0" instance=ExtResource("4_km3ho")]
+
+[node name="Shape" parent="PlayerDetectRange" index="0"]
+shape = SubResource("CircleShape2D_sn4y5")

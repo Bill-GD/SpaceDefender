@@ -8,6 +8,10 @@ script = ExtResource("1_3yfiy")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="HurtBox"]
+
 [node name="CharacterSprite" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(0.05, 0.05)
@@ -19,3 +23,5 @@ scale = Vector2(0.05, 0.05)
 show_behind_parent = true
 
 [node name="Trail" parent="TrailPosition" instance=ExtResource("3_do6gl")]
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

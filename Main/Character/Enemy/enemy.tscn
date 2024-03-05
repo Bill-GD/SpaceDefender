@@ -1,10 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuinup4t3opxf"]
+[gd_scene load_steps=5 format=3 uid="uid://cuinup4t3opxf"]
 
 [ext_resource type="PackedScene" uid="uid://cybe25aryci6c" path="res://Main/Character/character.tscn" id="1_c8lw1"]
-[ext_resource type="Texture2D" uid="uid://4102kfkc1i3t" path="res://Assets/Characters/player_ship.png" id="2_ll14o"]
+[ext_resource type="Script" path="res://Main/Character/Enemy/enemy.gd" id="2_mwcm0"]
+[ext_resource type="Script" path="res://Main/Character/Enemy/enemy_weapon_controller.gd" id="3_urtkh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ftms"]
+resource_local_to_scene = true
 
 [node name="Enemy" instance=ExtResource("1_c8lw1")]
-script = null
+script = ExtResource("2_mwcm0")
 
-[node name="CharacterSprite" parent="." index="1"]
-texture = ExtResource("2_ll14o")
+[node name="Weapon" parent="." index="3"]
+script = ExtResource("3_urtkh")
+
+[node name="AttackCooldown" type="Timer" parent="." index="4"]
+one_shot = true
+
+[node name="PlayerDetectRange" type="Area2D" parent="." index="5"]
+
+[node name="Shape" type="CollisionShape2D" parent="PlayerDetectRange" index="0"]
+shape = SubResource("CircleShape2D_4ftms")
+
+[connection signal="body_entered" from="PlayerDetectRange" to="." method="_on_player_detect_range_body_entered"]

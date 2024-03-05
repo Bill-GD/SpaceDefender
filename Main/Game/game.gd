@@ -3,7 +3,6 @@ extends Node2D
 @onready var camera := $Camera2D
 @onready var player := $Player
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
 	_update_camera_pos(player.global_position)
 
