@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3qxr7ij6q1tf"]
+
+[ext_resource type="PackedScene" uid="uid://cybe25aryci6c" path="res://Main/Character/character.tscn" id="1_n17mu"]
+[ext_resource type="Script" path="res://Main/Character/Player/player.gd" id="2_5wifa"]
+[ext_resource type="Script" path="res://Main/Character/basic_stats.gd" id="3_2admm"]
+[ext_resource type="Texture2D" uid="uid://4102kfkc1i3t" path="res://Assets/Characters/player_ship.png" id="4_abdpi"]
+
+[sub_resource type="Resource" id="Resource_l4v1g"]
+script = ExtResource("3_2admm")
+speed = 200.0
+health = 10.0
+damage = 1.0
+shield = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ew26"]
+radius = 7.0
+height = 28.0
+
+[node name="Player" instance=ExtResource("1_n17mu")]
+motion_mode = 1
+script = ExtResource("2_5wifa")
+basic_stats = SubResource("Resource_l4v1g")
+
+[node name="Collision" parent="." index="0"]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_5ew26")
+
+[node name="CharacterSprite" parent="." index="1"]
+texture = ExtResource("4_abdpi")

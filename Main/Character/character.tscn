@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cybe25aryci6c"]
 
-[ext_resource type="Script" path="res://Scenes/Character/character.gd" id="1_3yfiy"]
-[ext_resource type="PackedScene" uid="uid://biff2eb8dx7ma" path="res://Scenes/Weapon/weapon.tscn" id="2_64vfa"]
+[ext_resource type="Script" path="res://Main/Character/character.gd" id="1_3yfiy"]
+[ext_resource type="PackedScene" uid="uid://biff2eb8dx7ma" path="res://Main/Weapon/weapon.tscn" id="2_64vfa"]
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_3yfiy")
