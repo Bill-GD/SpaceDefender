@@ -64,3 +64,28 @@ Maybe change weapon with wheel.
 - Maybe Particles when moving, projectiles trail.
 
 # Implementation
+- Basic Stats (Resource)
+	- HP
+	- Damage
+	- Armor/Shield
+	- Speed
+
+- Character (Base class/scene)
+	- Children
+		- Sprite
+		- Collision
+		- Weapon
+	- Signals
+		- died
+	- Methods
+		- take_damage
+		- move
+		- die
+
+- Player (Character)
+	- 
+
+- Enemy (Character, Base of enemies)
+	- Children
+		- Detect range
+		- State Machine
