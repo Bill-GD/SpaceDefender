@@ -14,10 +14,14 @@ var damage: float = 0
 var chasing_target: bool = false
 
 func _ready() -> void:
+	var anim: Animation = $AnimationPlayer.get_animation("projectile_despawn")
+	anim.track_set_key_value(0, 0, $Sprite.scale)
+	
 	$DespawnTimer.start()
 	look_at(to_global(direction))
 	
-	if from_player: homing = PlayerStats.homing
+	if from_player: homing = PlayerStats.homing || homing
+	else: homing = false
 	if damage <= 0: print_rich('[color=red]%s damage is 0[/color]' % name)
 
 func seek() -> Vector2:
@@ -37,6 +41,9 @@ func _physics_process(delta) -> void:
 	position += velocity * delta
 
 func _on_despawn_timer_timeout() -> void:
+	$AnimationPlayer.play("projectile_despawn")
+	while $AnimationPlayer.is_playing():
+		await get_tree().create_timer(0.1).timeout
 	queue_free()
 
 func _on_homing_range_body_entered(body: CharacterBody2D) -> void:

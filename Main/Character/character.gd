@@ -24,6 +24,7 @@ func get_base_stats(stats: BasicStats) -> void:
 	shield = stats.base_shield
 
 func die() -> void:
+	$HurtBox.set_deferred("monitoring", false)
 	print_rich("[color=red]%s has died[/color]" % name)
 	if self is Enemy: queue_free()
 

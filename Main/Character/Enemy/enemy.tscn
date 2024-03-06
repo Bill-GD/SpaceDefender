@@ -22,3 +22,4 @@ one_shot = true
 shape = SubResource("CircleShape2D_4ftms")
 
 [connection signal="body_entered" from="PlayerDetectRange" to="." method="_on_player_detect_range_body_entered"]
+[connection signal="body_exited" from="PlayerDetectRange" to="." method="_on_player_detect_range_body_exited"]

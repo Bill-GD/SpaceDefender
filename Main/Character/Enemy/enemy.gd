@@ -12,4 +12,7 @@ func _physics_process(delta) -> void:
 func _on_player_detect_range_body_entered(body: PhysicsBody2D) -> void:
 	if body is Player:
 		target = body
-	pass # Replace with function body.
+
+func _on_player_detect_range_body_exited(body: PhysicsBody2D):
+	if body is Player:
+		target = null
