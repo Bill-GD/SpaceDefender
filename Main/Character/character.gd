@@ -29,11 +29,10 @@ func die() -> void:
 	if self is Enemy: queue_free()
 
 func take_damage(damage: float) -> void:
+	health -= damage
 	if health <= 0:
 		died.emit()
 		die()
-	else:
-		health -= damage
 	
 	print_rich("[color=yellow]%s took %s damage, %s left[/color]" % [name, damage, health])
 

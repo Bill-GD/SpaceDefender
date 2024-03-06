@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4krrhystj0qu"]
+[gd_scene load_steps=7 format=3 uid="uid://b4krrhystj0qu"]
 
 [ext_resource type="PackedScene" uid="uid://bs6gstpj7wr25" path="res://Main/Projectile/projectile.tscn" id="1_y2dqp"]
 [ext_resource type="Texture2D" uid="uid://dj7upw1relw18" path="res://Assets/Projectiles/rocket.png" id="2_emoft"]
 [ext_resource type="Script" path="res://Main/Projectile/Rocket/rocket.gd" id="2_rs0wt"]
+[ext_resource type="PackedScene" uid="uid://dxbymhpcvyu2v" path="res://Main/Effect/trail.tscn" id="4_lnwpj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fqt3o"]
 radius = 2.0
@@ -32,3 +33,10 @@ z_index = 1
 rotation = 1.57079
 texture = ExtResource("2_emoft")
 hframes = 2
+
+[node name="TrailPosition" type="Marker2D" parent="." index="5"]
+show_behind_parent = true
+position = Vector2(-6, 0)
+
+[node name="Trail" parent="TrailPosition" index="0" instance=ExtResource("4_lnwpj")]
+length = 15

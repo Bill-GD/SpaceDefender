@@ -3,6 +3,9 @@ extends Weapon
 
 @onready var locations := $ShootLocation
 
+func _ready() -> void:
+	super()
+
 func shoot(direction: Vector2, damage: float, from_player: bool = true) -> void:
 	if not $Cooldown.is_stopped(): return
 	

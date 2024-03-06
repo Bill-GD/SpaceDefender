@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Main/Character/Enemy/Normal/normal_enemy.gd" id="2_12ueh"]
 [ext_resource type="Texture2D" uid="uid://4102kfkc1i3t" path="res://Assets/Characters/player_ship.png" id="3_1t0we"]
 [ext_resource type="Script" path="res://Main/Character/basic_stats.gd" id="3_5knng"]
-[ext_resource type="PackedScene" uid="uid://ck6rngxawsodt" path="res://Main/Weapon/Blaster/blaster.tscn" id="4_km3ho"]
+[ext_resource type="PackedScene" uid="uid://7hejhoosvwij" path="res://Main/Weapon/RocketLauncher/double_rocket_launcher.tscn" id="5_uw1sd"]
 
 [sub_resource type="Resource" id="Resource_jso8y"]
 script = ExtResource("3_5knng")
@@ -39,7 +39,7 @@ shape = SubResource("CapsuleShape2D_v5jbx")
 [node name="CharacterSprite" parent="." index="2"]
 texture = ExtResource("3_1t0we")
 
-[node name="Blaster" parent="Weapon" index="0" instance=ExtResource("4_km3ho")]
+[node name="DoubleRocketLauncher" parent="Weapon" index="0" instance=ExtResource("5_uw1sd")]
 
 [node name="Shape" parent="PlayerDetectRange" index="0"]
 shape = SubResource("CircleShape2D_sn4y5")
