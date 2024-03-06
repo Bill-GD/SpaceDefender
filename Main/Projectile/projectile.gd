@@ -5,6 +5,8 @@ extends Area2D
 @export var homing: bool = false
 ## Should be double of speed for better homing
 @export var steer_force: float = 1
+## Damage multiplier for ammo type
+@export var extra_damage: float = 1
 
 var target: PhysicsBody2D = null
 var from_player: bool = true
@@ -22,7 +24,12 @@ func _ready() -> void:
 	
 	if from_player: homing = PlayerStats.homing || homing
 	else: homing = false
+	
+	damage *= extra_damage
 	if damage <= 0: print_rich('[color=red]%s damage is 0[/color]' % name)
+	
+func set_sprite_scale(new_scale: Vector2) -> void:
+	$Sprite.scale = new_scale
 
 func seek() -> Vector2:
 	var steer := Vector2.ZERO

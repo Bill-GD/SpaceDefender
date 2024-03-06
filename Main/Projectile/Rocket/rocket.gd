@@ -1,8 +1,8 @@
-class_name Blast
+class_name Rocket
 extends Projectile
 
 func _ready() -> void:
-	set_sprite_scale(Vector2(0.3, 0.3))
+	set_sprite_scale(Vector2(0.02, 0.02))
 	super()
 	if not from_player:
 		$Sprite.frame = 1

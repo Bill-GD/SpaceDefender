@@ -15,7 +15,6 @@ radius = 75.0
 [node name="Blast" instance=ExtResource("1_udw1y")]
 z_index = -1
 script = ExtResource("2_222tq")
-homing = true
 steer_force = 2000.0
 
 [node name="Collision" parent="." index="0"]

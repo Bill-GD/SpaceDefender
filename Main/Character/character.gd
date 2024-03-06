@@ -29,21 +29,18 @@ func die() -> void:
 	if self is Enemy: queue_free()
 
 func take_damage(damage: float) -> void:
-	print_rich("[color=yellow]%s took %s damage, %s left[/color]" % [name, damage, health])
-	
 	if health <= 0:
 		died.emit()
 		die()
 	else:
 		health -= damage
+	
+	print_rich("[color=yellow]%s took %s damage, %s left[/color]" % [name, damage, health])
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if not area is Projectile: return
+	area = area as Projectile
 	
-	if area.from_player and self is Enemy:
+	if (area.from_player and self is Enemy) or (not area.from_player and self is Player):
 		take_damage(area.damage)
-		
-	if not area.from_player and self is Player:
-		take_damage(area.damage)
-		
-	area.queue_free()
+		area.queue_free()

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://7smlw8fdvddj"]
+
+[ext_resource type="PackedScene" uid="uid://dpnmi83p5omse" path="res://Main/Weapon/weapon_base.tscn" id="1_lwp6r"]
+[ext_resource type="Texture2D" uid="uid://bep7pkjqlagsa" path="res://Assets/Weapons/single_rocket.png" id="2_3sa11"]
+[ext_resource type="Script" path="res://Main/Weapon/RocketLauncher/single_rocket_launcher.gd" id="3_3lkrv"]
+[ext_resource type="PackedScene" uid="uid://b4krrhystj0qu" path="res://Main/Projectile/Rocket/rocket.tscn" id="3_86iv0"]
+
+[node name="SingleRocketLauncher" instance=ExtResource("1_lwp6r")]
+z_index = 2
+texture = ExtResource("2_3sa11")
+script = ExtResource("3_3lkrv")
+ammo = ExtResource("3_86iv0")
+
+[node name="Cooldown" parent="." index="0"]
+wait_time = 1.0
+
+[node name="ShootLocation" type="Marker2D" parent="." index="1"]
+position = Vector2(25, 0)

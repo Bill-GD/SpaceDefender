@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4krrhystj0qu"]
+
+[ext_resource type="PackedScene" uid="uid://bs6gstpj7wr25" path="res://Main/Projectile/projectile.tscn" id="1_y2dqp"]
+[ext_resource type="Texture2D" uid="uid://dj7upw1relw18" path="res://Assets/Projectiles/rocket.png" id="2_emoft"]
+[ext_resource type="Script" path="res://Main/Projectile/Rocket/rocket.gd" id="2_rs0wt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fqt3o"]
+radius = 2.0
+height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_it87a"]
+resource_local_to_scene = true
+radius = 150.0
+
+[node name="Rocket" instance=ExtResource("1_y2dqp")]
+script = ExtResource("2_rs0wt")
+steer_force = 2000.0
+extra_damage = 2.0
+
+[node name="Collision" parent="." index="0"]
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_fqt3o")
+
+[node name="HomingRange" parent="." index="1"]
+visible = false
+
+[node name="HomingCollision" parent="HomingRange" index="0"]
+shape = SubResource("CircleShape2D_it87a")
+
+[node name="Sprite" parent="." index="2"]
+z_index = 1
+rotation = 1.57079
+texture = ExtResource("2_emoft")
+hframes = 2
