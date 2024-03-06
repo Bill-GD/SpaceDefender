@@ -17,6 +17,7 @@ func _ready() -> void:
 	$DespawnTimer.start()
 	look_at(to_global(direction))
 	
+	if from_player: homing = PlayerStats.homing
 	if damage <= 0: print_rich('[color=red]%s damage is 0[/color]' % name)
 
 func seek() -> Vector2:

@@ -82,9 +82,10 @@ Maybe change weapon with wheel.
 		- die
 
 - Player (Character)
-	- 
+	- Inherits from Character
 
 - Enemy (Character, Base of enemies)
 	- Children
 		- Detect range
 		- State Machine
+		- Attack Cooldown

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Main/Character/basic_stats.gd" id="3_2admm"]
 [ext_resource type="Texture2D" uid="uid://4102kfkc1i3t" path="res://Assets/Characters/player_ship.png" id="4_abdpi"]
 [ext_resource type="Script" path="res://Main/Character/Player/weapon_controller.gd" id="5_dilgy"]
-[ext_resource type="PackedScene" uid="uid://hspr326ra2d1" path="res://Main/Weapon/Blaster/quad_blaster.tscn" id="6_8x6ok"]
+[ext_resource type="PackedScene" uid="uid://ck6rngxawsodt" path="res://Main/Weapon/Blaster/blaster.tscn" id="6_u3exy"]
 
 [sub_resource type="Resource" id="Resource_eee1r"]
 script = ExtResource("3_2admm")
@@ -41,7 +41,7 @@ texture = ExtResource("4_abdpi")
 [node name="Weapon" parent="." index="3"]
 script = ExtResource("5_dilgy")
 
-[node name="QuadBlaster" parent="Weapon" index="0" instance=ExtResource("6_8x6ok")]
+[node name="Blaster" parent="Weapon" index="0" instance=ExtResource("6_u3exy")]
 
 [node name="TrailPosition" parent="." index="4"]
 position = Vector2(-9, 0)
