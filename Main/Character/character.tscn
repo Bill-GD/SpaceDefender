@@ -1,7 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://cybe25aryci6c"]
+[gd_scene load_steps=8 format=3 uid="uid://cybe25aryci6c"]
 
 [ext_resource type="Script" path="res://Main/Character/character.gd" id="1_3yfiy"]
+[ext_resource type="Shader" path="res://Main/Character/character_hit_flash.gdshader" id="2_x45pb"]
 [ext_resource type="PackedScene" uid="uid://dxbymhpcvyu2v" path="res://Main/Effect/trail.tscn" id="3_do6gl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwihs"]
+resource_local_to_scene = true
+shader = ExtResource("2_x45pb")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/strength = 0.0
+
+[sub_resource type="Animation" id="Animation_2eif5"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.7, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ini1x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite:material:shader_parameter/strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aorek"]
+_data = {
+"RESET": SubResource("Animation_ini1x"),
+"hit_flash": SubResource("Animation_2eif5")
+}
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_3yfiy")
@@ -14,6 +58,7 @@ script = ExtResource("1_3yfiy")
 
 [node name="CharacterSprite" type="Sprite2D" parent="."]
 z_index = 1
+material = SubResource("ShaderMaterial_lwihs")
 scale = Vector2(0.05, 0.05)
 
 [node name="Weapon" type="Node2D" parent="."]
@@ -24,8 +69,9 @@ show_behind_parent = true
 
 [node name="Trail" parent="TrailPosition" instance=ExtResource("3_do6gl")]
 
-[node name="InvincibleTime" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aorek")
+}
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

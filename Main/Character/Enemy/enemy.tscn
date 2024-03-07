@@ -1,14 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuinup4t3opxf"]
+[gd_scene load_steps=7 format=3 uid="uid://cuinup4t3opxf"]
 
 [ext_resource type="PackedScene" uid="uid://cybe25aryci6c" path="res://Main/Character/character.tscn" id="1_c8lw1"]
 [ext_resource type="Script" path="res://Main/Character/Enemy/enemy.gd" id="2_mwcm0"]
 [ext_resource type="Script" path="res://Main/Character/Enemy/enemy_weapon_controller.gd" id="3_urtkh"]
+[ext_resource type="Shader" path="res://Main/Character/character_hit_flash.gdshader" id="3_yybor"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1lt3"]
+resource_local_to_scene = true
+shader = ExtResource("3_yybor")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/strength = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ftms"]
 resource_local_to_scene = true
 
 [node name="Enemy" instance=ExtResource("1_c8lw1")]
 script = ExtResource("2_mwcm0")
+
+[node name="CharacterSprite" parent="." index="2"]
+material = SubResource("ShaderMaterial_w1lt3")
 
 [node name="Weapon" parent="." index="3"]
 script = ExtResource("3_urtkh")

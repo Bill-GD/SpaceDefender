@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3qxr7ij6q1tf"]
+[gd_scene load_steps=17 format=3 uid="uid://c3qxr7ij6q1tf"]
 
 [ext_resource type="PackedScene" uid="uid://cybe25aryci6c" path="res://Main/Character/character.tscn" id="1_n17mu"]
 [ext_resource type="Script" path="res://Main/Character/Player/player.gd" id="2_5wifa"]
 [ext_resource type="Script" path="res://Main/Character/basic_stats.gd" id="3_2admm"]
 [ext_resource type="Texture2D" uid="uid://4102kfkc1i3t" path="res://Assets/Characters/player_ship.png" id="4_abdpi"]
+[ext_resource type="Shader" path="res://Main/Character/character_hit_flash.gdshader" id="4_amr4w"]
 [ext_resource type="Script" path="res://Main/Character/Player/weapon_controller.gd" id="5_dilgy"]
 [ext_resource type="PackedScene" uid="uid://ck6rngxawsodt" path="res://Main/Weapon/Blaster/blaster.tscn" id="6_hlmey"]
 [ext_resource type="PackedScene" uid="uid://3o3p6plwchl3" path="res://Main/Weapon/LaserGun/laser_gun.tscn" id="6_jvisc"]
@@ -27,6 +28,12 @@ height = 28.0
 radius = 7.0
 height = 28.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_im3ys"]
+resource_local_to_scene = true
+shader = ExtResource("4_amr4w")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/strength = 0.0
+
 [node name="Player" instance=ExtResource("1_n17mu")]
 motion_mode = 1
 script = ExtResource("2_5wifa")
@@ -41,9 +48,13 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_ej4sk")
 
 [node name="CharacterSprite" parent="." index="2"]
+material = SubResource("ShaderMaterial_im3ys")
 texture = ExtResource("4_abdpi")
 
-[node name="Weapon" parent="." index="3"]
+[node name="AttackCooldown" type="Timer" parent="." index="3"]
+one_shot = true
+
+[node name="Weapon" parent="." index="4"]
 script = ExtResource("5_dilgy")
 
 [node name="Blaster" parent="Weapon" index="0" instance=ExtResource("6_hlmey")]
@@ -62,5 +73,11 @@ scale = Vector2(1, 1)
 length = null
 damage = null
 
-[node name="TrailPosition" parent="." index="4"]
+[node name="TrailPosition" parent="." index="5"]
 position = Vector2(-9, 0)
+
+[node name="InvincibleTime" type="Timer" parent="." index="6"]
+wait_time = 0.06
+one_shot = true
+
+[connection signal="timeout" from="InvincibleTime" to="." method="_on_invincible_time_timeout"]

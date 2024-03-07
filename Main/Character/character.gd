@@ -29,13 +29,16 @@ func die() -> void:
 	if self is Enemy: queue_free()
 
 func take_damage(damage: float) -> void:
-	if not $InvincibleTime.is_stopped(): return
+	if self is Player and not $InvincibleTime.is_stopped(): return
 	
+	$AnimationPlayer.play("hit_flash")
 	health -= damage
 	if health <= 0:
 		died.emit()
 		die()
-	$InvincibleTime.start()
+	if self is Player:
+		$InvincibleTime.start()
+		$HurtBox.set_deferred("monitoring", false)
 	
 	print_rich("[color=yellow]%s took %s damage, %s left[/color]" % [name, damage, health])
 

@@ -2,12 +2,15 @@ class_name LaserGun
 extends Weapon
 
 @export var length := 5000.
-@export var damage := 1.5
+@export var laser_damage_bonus := 3.
 
+@onready var parent := get_parent().get_parent()
 @onready var location := $ShootLocation
 @onready var ray_cast := $ShootLocation/RayCast
 @onready var beam := $ShootLocation/LaserBeam
+@onready var from_player := parent is Player
 
+var laser_damage: float
 var target_direction := Vector2.ZERO
 var is_shooting := false:
 	set(value):
@@ -15,21 +18,14 @@ var is_shooting := false:
 		$LaserStart.emitting = is_shooting
 		$LaserEnd.emitting = is_shooting
 var time_shooting := 0.
-var from_player := true
 
 func _ready() -> void:
-	super()
-	length *= PlayerStats.laser_length
-	
-func calculate_damage() -> float:
-	var result: float = damage
-	
-	if randf_range(0, 1) <= PlayerStats.crit_chance:
-		result = damage * PlayerStats.crit_damage
-	
-	return result * PlayerStats.damage_boost
+	$Cooldown.wait_time = 1 / PlayerStats.fire_rate
+	if from_player:
+		length *= PlayerStats.laser_length
 	
 func _process(delta) -> void:
+	target_direction = to_global(Vector2.from_angle(parent.rotation))
 	if is_shooting:
 		time_shooting += delta
 		
@@ -42,8 +38,12 @@ func _process(delta) -> void:
 		# collision
 		if ray_cast.is_colliding():
 			var collision = ray_cast.get_collider()
-			if collision is Enemy and from_player:
-				collision.take_damage(calculate_damage())
+			if $DamageCooldown.is_stopped():
+				if collision is Enemy and from_player:
+					collision.take_damage(laser_damage)
+				if collision is Player and not from_player:
+					collision.take_damage(laser_damage)
+				$DamageCooldown.start()
 				
 			var coll_point = ray_cast.get_collision_point()
 			beam.points[1] = beam.to_local(coll_point)
@@ -57,6 +57,7 @@ func _process(delta) -> void:
 func shoot(direction: Vector2, damage: float, from_player: bool = true) -> void:
 	if is_shooting: return
 	if not $Cooldown.is_stopped(): return
+	laser_damage = (3 + damage) * laser_damage_bonus
 	start_attack()
 	
 func start_attack() -> void:
@@ -66,9 +67,9 @@ func start_attack() -> void:
 
 func stop_attack() -> void:
 	is_shooting = false
-	$Cooldown.wait_time = 0.5 + time_shooting / 2
-	print('%s Cooldown: %s' % [name, $Cooldown.wait_time])
+	$Cooldown.wait_time = 1 / PlayerStats.fire_rate + time_shooting / 2
 	time_shooting = 0
+	print("Laser cooldown: %s" % $Cooldown.wait_time)
 	$Cooldown.start()
 		
 	var tween = create_tween()

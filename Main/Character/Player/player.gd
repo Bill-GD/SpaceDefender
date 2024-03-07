@@ -1,6 +1,8 @@
 class_name Player
 extends Character
 
+var attack_cooldown := 1.
+
 func _ready() -> void:
 	get_base_stats(base_stats)
 	update_stats()
@@ -24,7 +26,10 @@ func calculate_damage() -> float:
 	if randf_range(0, 1) <= PlayerStats.crit_chance:
 		result = damage * PlayerStats.crit_damage
 	
-	return result
+	return result * PlayerStats.damage_boost
+	
+func _on_invincible_time_timeout():
+	$HurtBox.set_deferred("monitoring", true)
 
 #func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("primary_attack"):
