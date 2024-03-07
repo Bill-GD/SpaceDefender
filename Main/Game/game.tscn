@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bayf3ef0gkq7f"]
 
 [ext_resource type="Script" path="res://Main/Game/game.gd" id="1_ptkmp"]
-[ext_resource type="Shader" path="res://Main/Game/background.gdshader" id="1_q0nsj"]
+[ext_resource type="Shader" path="res://Main/Effect/background.gdshader" id="1_q0nsj"]
 [ext_resource type="PackedScene" uid="uid://c3qxr7ij6q1tf" path="res://Main/Character/Player/player.tscn" id="2_pa43f"]
 [ext_resource type="PackedScene" uid="uid://ic4anpi8ge5a" path="res://Main/Character/Enemy/Normal/normal_enemy.tscn" id="4_o2mnu"]
 

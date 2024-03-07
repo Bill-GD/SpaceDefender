@@ -6,6 +6,5 @@ func _ready() -> void:
 	super()
 
 func _physics_process(delta) -> void:
-	if target:
-		look_at(target.global_position)
+	super(delta)
 	pass

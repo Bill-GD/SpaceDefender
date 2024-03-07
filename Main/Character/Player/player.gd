@@ -17,8 +17,8 @@ func _physics_process(delta) -> void:
 	move_and_collide(velocity * delta)
 	
 func update_stats() -> void:
-	speed *= PlayerStats.speed_boost
-	damage *= PlayerStats.damage_boost
+	speed *= PlayerStats.speed_mult
+	damage *= PlayerStats.damage_mult
 	
 func calculate_damage() -> float:
 	var result: float = damage
@@ -26,9 +26,9 @@ func calculate_damage() -> float:
 	if randf_range(0, 1) <= PlayerStats.crit_chance:
 		result = damage * PlayerStats.crit_damage
 	
-	return result * PlayerStats.damage_boost
+	return result * PlayerStats.damage_mult
 	
-func _on_invincible_time_timeout():
+func _on_invincible_time_timeout() -> void:
 	$HurtBox.set_deferred("monitoring", true)
 
 #func _input(event: InputEvent) -> void:

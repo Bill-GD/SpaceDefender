@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://cybe25aryci6c"]
 
 [ext_resource type="Script" path="res://Main/Character/character.gd" id="1_3yfiy"]
-[ext_resource type="Shader" path="res://Main/Character/character_hit_flash.gdshader" id="2_x45pb"]
+[ext_resource type="Shader" path="res://Main/Effect/character_hit_flash.gdshader" id="2_tys3t"]
 [ext_resource type="PackedScene" uid="uid://dxbymhpcvyu2v" path="res://Main/Effect/trail.tscn" id="3_do6gl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lwihs"]
 resource_local_to_scene = true
-shader = ExtResource("2_x45pb")
+shader = ExtResource("2_tys3t")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
 shader_parameter/strength = 0.0
 

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cybe25aryci6c" path="res://Main/Character/character.tscn" id="1_c8lw1"]
 [ext_resource type="Script" path="res://Main/Character/Enemy/enemy.gd" id="2_mwcm0"]
 [ext_resource type="Script" path="res://Main/Character/Enemy/enemy_weapon_controller.gd" id="3_urtkh"]
-[ext_resource type="Shader" path="res://Main/Character/character_hit_flash.gdshader" id="3_yybor"]
+[ext_resource type="Shader" path="res://Main/Effect/character_hit_flash.gdshader" id="3_yybor"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w1lt3"]
 resource_local_to_scene = true

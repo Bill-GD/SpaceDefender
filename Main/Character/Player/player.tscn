@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Main/Character/Player/player.gd" id="2_5wifa"]
 [ext_resource type="Script" path="res://Main/Character/basic_stats.gd" id="3_2admm"]
 [ext_resource type="Texture2D" uid="uid://4102kfkc1i3t" path="res://Assets/Characters/player_ship.png" id="4_abdpi"]
-[ext_resource type="Shader" path="res://Main/Character/character_hit_flash.gdshader" id="4_amr4w"]
+[ext_resource type="Shader" path="res://Main/Effect/character_hit_flash.gdshader" id="4_amr4w"]
 [ext_resource type="Script" path="res://Main/Character/Player/weapon_controller.gd" id="5_dilgy"]
 [ext_resource type="PackedScene" uid="uid://ck6rngxawsodt" path="res://Main/Weapon/Blaster/blaster.tscn" id="6_hlmey"]
 [ext_resource type="PackedScene" uid="uid://3o3p6plwchl3" path="res://Main/Weapon/LaserGun/laser_gun.tscn" id="6_jvisc"]

@@ -16,11 +16,8 @@ func _process(_delta) -> void:
 	var timer: Timer = parent.get_node("AttackCooldown") as Timer
 	if not parent.target: return
 	if not timer.is_stopped(): return
+	if not parent.can_attack: return
 	
 	var shoot_direction = parent.target.global_position - parent.global_position
 	weapon_node.shoot(shoot_direction.normalized(), parent.damage, false)
 	timer.start()
-		
-func _input(event) -> void:
-	# Change weapon (wheel)
-	pass

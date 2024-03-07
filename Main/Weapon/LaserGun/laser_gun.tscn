@@ -1,8 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://3o3p6plwchl3"]
+[gd_scene load_steps=15 format=3 uid="uid://3o3p6plwchl3"]
 
 [ext_resource type="PackedScene" uid="uid://dpnmi83p5omse" path="res://Main/Weapon/weapon_base.tscn" id="1_30pcf"]
 [ext_resource type="Texture2D" uid="uid://c68qvcgvdwlom" path="res://Assets/Weapons/laser_gun.png" id="2_phjev"]
 [ext_resource type="Script" path="res://Main/Weapon/LaserGun/laser_gun.gd" id="3_068wg"]
+[ext_resource type="Shader" path="res://Main/Effect/laser_beam.gdshader" id="4_rektb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wheqg"]
+resource_local_to_scene = true
+shader = ExtResource("4_rektb")
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xj3fk"]
+resource_local_to_scene = true
+shader = ExtResource("4_rektb")
+shader_parameter/color = Color(1, 1, 1, 1)
 
 [sub_resource type="Curve" id="Curve_ayoa5"]
 _data = [Vector2(0, 0.8), 0.0, 0.0, 0, 0, Vector2(0.5, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -20,16 +31,39 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_5b44f")
 
 [sub_resource type="Gradient" id="Gradient_3clsy"]
-offsets = PackedFloat32Array(0.451411, 1)
+offsets = PackedFloat32Array(0.3, 1)
 colors = PackedColorArray(0, 1, 1, 1, 0, 1, 1, 0)
+metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0wlcp"]
+resource_local_to_scene = true
 gradient = SubResource("Gradient_3clsy")
-width = 20
-height = 20
+width = 16
+height = 16
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oka7g"]
+resource_local_to_scene = true
+shader = ExtResource("4_rektb")
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_muadq"]
+offsets = PackedFloat32Array(0.95, 1)
+colors = PackedColorArray(0, 1, 1, 1, 0, 1, 1, 0)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_emkl4"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_muadq")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 metadata/_snap_enabled = true
 
 [node name="LaserGun" instance=ExtResource("1_30pcf")]
@@ -45,12 +79,13 @@ position = Vector2(322, 0)
 
 [node name="LaserBeam" type="Line2D" parent="ShootLocation" index="1"]
 z_index = -2
+material = SubResource("ShaderMaterial_wheqg")
 points = PackedVector2Array(0, 0, 0, 0)
 width = 100.0
-default_color = Color(0, 1, 1, 1)
 
 [node name="LaserStart" type="GPUParticles2D" parent="." index="1"]
 z_index = -1
+material = SubResource("ShaderMaterial_xj3fk")
 position = Vector2(322, 0)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_xnfom")
@@ -60,10 +95,11 @@ randomness = 0.4
 
 [node name="LaserEnd" type="GPUParticles2D" parent="." index="2"]
 z_index = -1
+material = SubResource("ShaderMaterial_oka7g")
 position = Vector2(322, 0)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_xnfom")
-texture = SubResource("GradientTexture2D_0wlcp")
+texture = SubResource("GradientTexture2D_emkl4")
 lifetime = 0.3
 randomness = 0.4
 
