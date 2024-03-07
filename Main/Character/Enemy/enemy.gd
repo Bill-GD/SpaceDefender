@@ -9,10 +9,10 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	pass
 
-func _on_player_detect_range_body_entered(body: PhysicsBody2D) -> void:
+func _on_attack_range_body_entered(body: PhysicsBody2D) -> void:
 	if body is Player:
 		target = body
 
-func _on_player_detect_range_body_exited(body: PhysicsBody2D):
+func _on_attack_range_body_exited(body: PhysicsBody2D):
 	if body is Player:
 		target = null

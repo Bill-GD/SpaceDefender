@@ -20,9 +20,8 @@ height = 28.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v5jbx"]
 height = 32.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sn4y5"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_tj7os"]
 resource_local_to_scene = true
-radius = 400.0
 
 [node name="NormalEnemy" instance=ExtResource("1_vq6nb")]
 script = ExtResource("2_12ueh")
@@ -41,5 +40,5 @@ texture = ExtResource("3_1t0we")
 
 [node name="DoubleRocketLauncher" parent="Weapon" index="0" instance=ExtResource("5_uw1sd")]
 
-[node name="Shape" parent="PlayerDetectRange" index="0"]
-shape = SubResource("CircleShape2D_sn4y5")
+[node name="Shape" parent="AttackRange" index="0"]
+shape = SubResource("CircleShape2D_tj7os")

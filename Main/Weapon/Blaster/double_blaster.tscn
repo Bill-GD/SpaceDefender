@@ -11,7 +11,7 @@ script = ExtResource("2_wu65w")
 ammo = ExtResource("4_jvj8k")
 
 [node name="Cooldown" parent="." index="0"]
-wait_time = 0.35
+wait_time = 0.4
 
 [node name="ShootLocation" type="Node2D" parent="." index="1"]
 

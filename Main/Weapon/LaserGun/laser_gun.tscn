@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://3o3p6plwchl3"]
+
+[ext_resource type="PackedScene" uid="uid://dpnmi83p5omse" path="res://Main/Weapon/weapon_base.tscn" id="1_30pcf"]
+[ext_resource type="Texture2D" uid="uid://c68qvcgvdwlom" path="res://Assets/Weapons/laser_gun.png" id="2_phjev"]
+[ext_resource type="Script" path="res://Main/Weapon/LaserGun/laser_gun.gd" id="3_068wg"]
+
+[sub_resource type="Curve" id="Curve_ayoa5"]
+_data = [Vector2(0, 0.8), 0.0, 0.0, 0, 0, Vector2(0.5, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_5b44f"]
+curve = SubResource("Curve_ayoa5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xnfom"]
+particle_flag_disable_z = true
+spread = 75.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_5b44f")
+
+[sub_resource type="Gradient" id="Gradient_3clsy"]
+offsets = PackedFloat32Array(0.451411, 1)
+colors = PackedColorArray(0, 1, 1, 1, 0, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0wlcp"]
+gradient = SubResource("Gradient_3clsy")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+
+[node name="LaserGun" instance=ExtResource("1_30pcf")]
+texture = ExtResource("2_phjev")
+script = ExtResource("3_068wg")
+length = 5000.0
+damage = 1.5
+
+[node name="ShootLocation" type="Marker2D" parent="." index="1"]
+position = Vector2(322, 0)
+
+[node name="RayCast" type="RayCast2D" parent="ShootLocation" index="0"]
+
+[node name="LaserBeam" type="Line2D" parent="ShootLocation" index="1"]
+z_index = -2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 100.0
+default_color = Color(0, 1, 1, 1)
+
+[node name="LaserStart" type="GPUParticles2D" parent="." index="2"]
+z_index = -1
+position = Vector2(322, 0)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_xnfom")
+texture = SubResource("GradientTexture2D_0wlcp")
+lifetime = 0.3
+randomness = 0.4
+
+[node name="LaserEnd" type="GPUParticles2D" parent="." index="3"]
+z_index = -1
+position = Vector2(322, 0)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_xnfom")
+texture = SubResource("GradientTexture2D_0wlcp")
+lifetime = 0.3
+randomness = 0.4

@@ -24,15 +24,18 @@ func get_base_stats(stats: BasicStats) -> void:
 	shield = stats.base_shield
 
 func die() -> void:
-	$HurtBox.set_deferred("monitoring", false)
+	#$HurtBox.set_deferred("monitoring", false)
 	print_rich("[color=red]%s has died[/color]" % name)
 	if self is Enemy: queue_free()
 
 func take_damage(damage: float) -> void:
+	if not $InvincibleTime.is_stopped(): return
+	
 	health -= damage
 	if health <= 0:
 		died.emit()
 		die()
+	$InvincibleTime.start()
 	
 	print_rich("[color=yellow]%s took %s damage, %s left[/color]" % [name, damage, health])
 

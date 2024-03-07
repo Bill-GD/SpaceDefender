@@ -16,10 +16,10 @@ script = ExtResource("3_urtkh")
 [node name="AttackCooldown" type="Timer" parent="." index="4"]
 one_shot = true
 
-[node name="PlayerDetectRange" type="Area2D" parent="." index="5"]
+[node name="AttackRange" type="Area2D" parent="." index="5"]
 
-[node name="Shape" type="CollisionShape2D" parent="PlayerDetectRange" index="0"]
+[node name="Shape" type="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource("CircleShape2D_4ftms")
 
-[connection signal="body_entered" from="PlayerDetectRange" to="." method="_on_player_detect_range_body_entered"]
-[connection signal="body_exited" from="PlayerDetectRange" to="." method="_on_player_detect_range_body_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]

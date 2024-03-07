@@ -31,7 +31,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.25, 1.25)
+zoom = Vector2(1.5, 1.5)
 
 [node name="NormalEnemy" parent="." instance=ExtResource("4_o2mnu")]
-position = Vector2(513, 301)
+position = Vector2(548, 347)

@@ -24,4 +24,8 @@ show_behind_parent = true
 
 [node name="Trail" parent="TrailPosition" instance=ExtResource("3_do6gl")]
 
+[node name="InvincibleTime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

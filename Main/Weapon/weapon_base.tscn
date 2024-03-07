@@ -8,3 +8,5 @@ script = ExtResource("1_7tjra")
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

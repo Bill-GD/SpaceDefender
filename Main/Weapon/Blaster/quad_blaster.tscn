@@ -10,6 +10,9 @@ texture = ExtResource("2_so3dl")
 script = ExtResource("3_8s63j")
 ammo = ExtResource("4_ur64s")
 
+[node name="Cooldown" parent="." index="0"]
+wait_time = 0.4
+
 [node name="ShootLocation" type="Node2D" parent="." index="1"]
 
 [node name="Point1" type="Marker2D" parent="ShootLocation" index="0"]
