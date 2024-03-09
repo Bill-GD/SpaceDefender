@@ -8,8 +8,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dlbe2"]
 shader = ExtResource("1_q0nsj")
 shader_parameter/random_rate = 1.0
-shader_parameter/brightness = 0.1
-shader_parameter/flash_frequency = 0.5
+shader_parameter/brightness = 0.35
+shader_parameter/flash_frequency = 2.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ptkmp")
@@ -35,9 +35,3 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="NormalEnemy" parent="." instance=ExtResource("4_o2mnu")]
 position = Vector2(548, 347)
-
-[node name="NormalEnemy2" parent="." instance=ExtResource("4_o2mnu")]
-position = Vector2(1275, 465)
-
-[node name="NormalEnemy3" parent="." instance=ExtResource("4_o2mnu")]
-position = Vector2(6, 814)

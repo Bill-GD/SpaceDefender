@@ -69,8 +69,8 @@ metadata/_snap_enabled = true
 [node name="LaserGun" instance=ExtResource("1_30pcf")]
 texture = ExtResource("2_phjev")
 script = ExtResource("3_068wg")
-length = 5000.0
-damage = 1.5
+laser_length = 5000.0
+laser_damage_mult = 2.0
 
 [node name="ShootLocation" type="Marker2D" parent="." index="0"]
 position = Vector2(322, 0)

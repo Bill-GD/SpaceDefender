@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3qxr7ij6q1tf"]
+[gd_scene load_steps=12 format=3 uid="uid://c3qxr7ij6q1tf"]
 
 [ext_resource type="PackedScene" uid="uid://cybe25aryci6c" path="res://Main/Character/character.tscn" id="1_n17mu"]
 [ext_resource type="Script" path="res://Main/Character/Player/player.gd" id="2_5wifa"]
@@ -7,11 +7,6 @@
 [ext_resource type="Shader" path="res://Main/Effect/character_hit_flash.gdshader" id="4_amr4w"]
 [ext_resource type="Script" path="res://Main/Character/Player/weapon_controller.gd" id="5_dilgy"]
 [ext_resource type="PackedScene" uid="uid://ck6rngxawsodt" path="res://Main/Weapon/Blaster/blaster.tscn" id="6_hlmey"]
-[ext_resource type="PackedScene" uid="uid://3o3p6plwchl3" path="res://Main/Weapon/LaserGun/laser_gun.tscn" id="6_jvisc"]
-[ext_resource type="PackedScene" uid="uid://7smlw8fdvddj" path="res://Main/Weapon/RocketLauncher/single_rocket_launcher.tscn" id="6_mssp7"]
-[ext_resource type="PackedScene" uid="uid://b6kos32hif1gi" path="res://Main/Weapon/Blaster/double_blaster.tscn" id="7_nhijv"]
-[ext_resource type="PackedScene" uid="uid://hspr326ra2d1" path="res://Main/Weapon/Blaster/quad_blaster.tscn" id="8_p3bjl"]
-[ext_resource type="PackedScene" uid="uid://7hejhoosvwij" path="res://Main/Weapon/RocketLauncher/double_rocket_launcher.tscn" id="10_gaudj"]
 
 [sub_resource type="Resource" id="Resource_eee1r"]
 script = ExtResource("3_2admm")
@@ -58,20 +53,6 @@ one_shot = true
 script = ExtResource("5_dilgy")
 
 [node name="Blaster" parent="Weapon" index="0" instance=ExtResource("6_hlmey")]
-
-[node name="DoubleBlaster" parent="Weapon" index="1" instance=ExtResource("7_nhijv")]
-
-[node name="QuadBlaster" parent="Weapon" index="2" instance=ExtResource("8_p3bjl")]
-scale = Vector2(1, 1)
-
-[node name="SingleRocketLauncher" parent="Weapon" index="3" instance=ExtResource("6_mssp7")]
-scale = Vector2(1, 1)
-
-[node name="DoubleRocketLauncher" parent="Weapon" index="4" instance=ExtResource("10_gaudj")]
-
-[node name="LaserGun" parent="Weapon" index="5" instance=ExtResource("6_jvisc")]
-length = null
-damage = null
 
 [node name="TrailPosition" parent="." index="5"]
 position = Vector2(-9, 0)

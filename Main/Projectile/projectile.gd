@@ -27,7 +27,7 @@ func _ready() -> void:
 	
 	damage *= extra_damage
 	if damage <= 0: print_rich('[color=red]%s damage is 0[/color]' % name)
-	
+
 func set_sprite_scale(new_scale: Vector2) -> void:
 	$Sprite.scale = new_scale
 

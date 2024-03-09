@@ -1,16 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://ic4anpi8ge5a"]
+[gd_scene load_steps=11 format=3 uid="uid://ic4anpi8ge5a"]
 
 [ext_resource type="PackedScene" uid="uid://cuinup4t3opxf" path="res://Main/Character/Enemy/enemy.tscn" id="1_vq6nb"]
 [ext_resource type="Script" path="res://Main/Character/Enemy/Normal/normal_enemy.gd" id="2_12ueh"]
 [ext_resource type="Texture2D" uid="uid://4102kfkc1i3t" path="res://Assets/Characters/player_ship.png" id="3_1t0we"]
 [ext_resource type="Script" path="res://Main/Character/basic_stats.gd" id="3_5knng"]
 [ext_resource type="Shader" path="res://Main/Effect/character_hit_flash.gdshader" id="4_a1sg1"]
-[ext_resource type="PackedScene" uid="uid://3o3p6plwchl3" path="res://Main/Weapon/LaserGun/laser_gun.tscn" id="6_76igv"]
 
 [sub_resource type="Resource" id="Resource_jso8y"]
 script = ExtResource("3_5knng")
 base_speed = 200.0
-base_health = 40.0
+base_health = 10.0
 base_damage = 1.0
 base_shield = 0.0
 
@@ -33,6 +32,7 @@ radius = 350.0
 
 [node name="NormalEnemy" instance=ExtResource("1_vq6nb")]
 script = ExtResource("2_12ueh")
+weapon_type = 0
 base_stats = SubResource("Resource_jso8y")
 
 [node name="Collision" parent="." index="0"]
@@ -46,8 +46,6 @@ shape = SubResource("CapsuleShape2D_v5jbx")
 [node name="CharacterSprite" parent="." index="2"]
 material = SubResource("ShaderMaterial_kmgkf")
 texture = ExtResource("3_1t0we")
-
-[node name="LaserGun" parent="Weapon" index="0" instance=ExtResource("6_76igv")]
 
 [node name="Shape" parent="AttackRange" index="0"]
 shape = SubResource("CircleShape2D_tj7os")

@@ -2,7 +2,7 @@ class_name LaserGun
 extends Weapon
 
 @export var laser_length := 5000.
-@export var laser_damage_bonus := 2.
+@export var laser_damage_mult := 2.
 
 @onready var parent := get_parent().get_parent()
 @onready var location := $ShootLocation
@@ -33,10 +33,10 @@ func _process(delta) -> void:
 		time_shooting += delta
 		
 		# laser
-		ray_cast.target_position = ray_cast.to_local(target_direction).normalized() * -laser_length
+		ray_cast.target_position = ray_cast.to_local(target_direction).normalized() * - laser_length
 		beam.points[1] = ray_cast.target_position * laser_end_offset
 		$LaserEnd.global_position = to_global(ray_cast.target_position)
-		$LaserEnd.global_rotation = $LaserEnd.to_local(ray_cast.target_position).angle() * -1
+		$LaserEnd.global_rotation = $LaserEnd.to_local(ray_cast.target_position).angle() * - 1
 		
 		# collision
 		if ray_cast.is_colliding():
@@ -47,7 +47,7 @@ func _process(delta) -> void:
 				if collision is Player and not from_player:
 					collision.take_damage(laser_damage / 3)
 				$DamageCooldown.start()
-				
+			
 			var coll_point = ray_cast.get_collision_point()
 			beam.points[1] = beam.to_local(coll_point)
 			$LaserEnd.global_position = coll_point
@@ -57,10 +57,10 @@ func _process(delta) -> void:
 		if Input.is_action_just_released("primary_attack"):
 			stop_attack()
 
-func shoot(direction: Vector2, damage: float, from_player: bool = true) -> void:
+func shoot(_direction: Vector2, damage: float, _is_from_player: bool=true) -> void:
 	if is_shooting: return
 	if not $Cooldown.is_stopped(): return
-	laser_damage = (3 + damage) * laser_damage_bonus
+	laser_damage = (3 + damage) * laser_damage_mult
 	start_attack()
 	
 func start_attack() -> void:
@@ -74,7 +74,7 @@ func stop_attack() -> void:
 	time_shooting = 0
 	print("Laser cooldown: %s" % $Cooldown.wait_time)
 	$Cooldown.start()
-		
+	
 	var tween = create_tween()
 	tween.tween_property($ShootLocation/LaserBeam, "width", 0, 0.1)
 	await tween.finished
