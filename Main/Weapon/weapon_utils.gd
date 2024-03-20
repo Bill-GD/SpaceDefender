@@ -4,6 +4,7 @@ extends GDScript
 enum WeaponType {
 	SINGLE_BLASTER,
 	DOUBLE_BLASTER,
+	SHOTGUN,
 	QUAD_BLASTER,
 	SINGLE_ROCKET,
 	DOUBLE_ROCKET,
@@ -13,6 +14,7 @@ enum WeaponType {
 static var weapon_types: Array[String] = [
 	"SINGLE_BLASTER",
 	"DOUBLE_BLASTER",
+	"SHOTGUN",
 	"QUAD_BLASTER",
 	"SINGLE_ROCKET",
 	"DOUBLE_ROCKET",
@@ -22,6 +24,7 @@ static var weapon_types: Array[String] = [
 static var weapon_paths: Array[String] = [
 	"res://Main/Weapon/Blaster/blaster.tscn",
 	"res://Main/Weapon/Blaster/double_blaster.tscn",
+	"res://Main/Weapon/Shotgun/shotgun.tscn",
 	"res://Main/Weapon/Blaster/quad_blaster.tscn",
 	"res://Main/Weapon/RocketLauncher/single_rocket_launcher.tscn",
 	"res://Main/Weapon/RocketLauncher/double_rocket_launcher.tscn",

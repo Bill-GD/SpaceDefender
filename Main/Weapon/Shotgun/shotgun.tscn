@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://bddfmmfe5mt7c"]
+
+[ext_resource type="PackedScene" uid="uid://dpnmi83p5omse" path="res://Main/Weapon/weapon_base.tscn" id="1_1oyy3"]
+[ext_resource type="Texture2D" uid="uid://cjvajqqsqxt17" path="res://Assets/Weapons/shotgun.png" id="2_85ck2"]
+[ext_resource type="Script" path="res://Main/Weapon/Shotgun/shotgun.gd" id="2_ah5q2"]
+[ext_resource type="PackedScene" uid="uid://c0ps1s4n6adt8" path="res://Main/Projectile/Blast/blast.tscn" id="3_oopqn"]
+
+[node name="Shotgun" instance=ExtResource("1_1oyy3")]
+texture = ExtResource("2_85ck2")
+script = ExtResource("2_ah5q2")
+blast_count = 5
+spread_degree = 30
+ammo = ExtResource("3_oopqn")
+
+[node name="ShootLocation" type="Marker2D" parent="." index="0"]
+position = Vector2(276, 0)

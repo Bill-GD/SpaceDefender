@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_jso8y"]
 script = ExtResource("3_5knng")
 base_speed = 200.0
-base_health = 10.0
+base_health = 20.0
 base_damage = 1.0
 base_shield = 0.0
 

@@ -2,6 +2,8 @@ class_name Player
 extends Character
 
 var attack_cooldown := 1.
+var accel: float = 2500
+var friction: float = 500
 
 func _ready() -> void:
 	update_stats()
@@ -10,9 +12,17 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	look_at(get_global_mouse_position())
 
-	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 	
-	velocity = direction * speed
+	if direction == Vector2.ZERO:
+		if velocity.length() > (friction * delta):
+			velocity -= velocity.normalized() * (friction * delta)
+		else:
+			velocity = Vector2.ZERO
+	else:
+		velocity += (accel * direction * delta)
+		velocity = velocity.limit_length(speed)
+	
 	move_and_collide(velocity * delta)
 
 func take_damage(damage_taken: float) -> void:

@@ -10,3 +10,6 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	super(delta)
 	pass
+
+func set_despawn_timer(new_time: float) -> void:
+	$DespawnTimer.wait_time = new_time

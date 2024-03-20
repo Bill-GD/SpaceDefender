@@ -9,6 +9,6 @@ func _process(_delta) -> void:
 func _update_camera_pos(new_pos: Vector2) -> void:
 	camera.global_position = new_pos
 
-# func _input(event: InputEvent) -> void:
-# 	if event.is_action_pressed("move_boost"):
-# 		%Player.add_weapon(WeaponUtils.WeaponType.DOUBLE_BLASTER)
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("move_boost"):
+		%Player.add_weapon(WeaponUtils.WeaponType.SHOTGUN)

@@ -10,8 +10,5 @@ texture = ExtResource("1_p3fyx")
 script = ExtResource("2_wfwku")
 ammo = ExtResource("3_gxkev")
 
-[node name="Cooldown" parent="." index="0"]
-wait_time = 0.4
-
-[node name="ShootLocation" type="Marker2D" parent="." index="1"]
+[node name="ShootLocation" type="Marker2D" parent="." index="0"]
 position = Vector2(302, 0)
