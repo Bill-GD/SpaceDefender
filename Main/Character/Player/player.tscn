@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3qxr7ij6q1tf"]
+[gd_scene load_steps=11 format=3 uid="uid://c3qxr7ij6q1tf"]
 
 [ext_resource type="PackedScene" uid="uid://cybe25aryci6c" path="res://Main/Character/character.tscn" id="1_n17mu"]
 [ext_resource type="Script" path="res://Main/Character/Player/player.gd" id="2_5wifa"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://4102kfkc1i3t" path="res://Assets/Characters/player_ship.png" id="4_abdpi"]
 [ext_resource type="Shader" path="res://Main/Effect/character_hit_flash.gdshader" id="4_amr4w"]
 [ext_resource type="Script" path="res://Main/Character/Player/weapon_controller.gd" id="5_dilgy"]
-[ext_resource type="PackedScene" uid="uid://ck6rngxawsodt" path="res://Main/Weapon/Blaster/blaster.tscn" id="6_hlmey"]
 
 [sub_resource type="Resource" id="Resource_eee1r"]
 script = ExtResource("3_2admm")
@@ -51,8 +50,6 @@ one_shot = true
 
 [node name="Weapon" parent="." index="4"]
 script = ExtResource("5_dilgy")
-
-[node name="Blaster" parent="Weapon" index="0" instance=ExtResource("6_hlmey")]
 
 [node name="TrailPosition" parent="." index="5"]
 position = Vector2(-9, 0)

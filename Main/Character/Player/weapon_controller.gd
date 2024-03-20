@@ -8,6 +8,7 @@ var weapon_node: Weapon = null
 var weapon_index: int = 0
 
 func _ready() -> void:
+	init_weapons()
 	var count := get_child_count()
 	if count <= 0:
 		printerr("Player Weapon Controller couldn't detect any weapon")
@@ -25,6 +26,10 @@ func _process(_delta) -> void:
 			var shoot_direction = get_global_mouse_position() - player.global_position
 			weapon_node.shoot(shoot_direction.normalized(), player.calculate_damage())
 			atk_cooldown.start()
+
+func init_weapons() -> void:
+	for weapon in WeaponUtils.player_weapons:
+		player.init_weapon(weapon)
 
 func set_weapon(index: int) -> void:
 	if weapon_node: weapon_node.hide()

@@ -35,6 +35,12 @@ func die() -> void:
 	super()
 	# emit player died signal -> handle game over
 
+func init_weapon(weapon_type: WeaponUtils.WeaponType) -> void:
+	var new_weapon: Weapon = load(WeaponUtils.weapon_paths[weapon_type]).instantiate()
+	new_weapon.hide()
+	
+	$Weapon.add_child(new_weapon)
+
 func add_weapon(weapon_type: WeaponUtils.WeaponType) -> void:
 	if weapon_type in WeaponUtils.player_weapons: return
 
