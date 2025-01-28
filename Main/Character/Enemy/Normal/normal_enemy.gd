@@ -4,8 +4,8 @@ extends Enemy
 @export var weapon_type: WeaponUtils.WeaponType
 
 func _ready() -> void:
-	set_weapon(WeaponUtils.enemy_weapons.pick_random())
 	super()
+	set_weapon(WeaponUtils.enemy_weapons.pick_random())
 	target = %Player
 
 func _physics_process(delta) -> void:

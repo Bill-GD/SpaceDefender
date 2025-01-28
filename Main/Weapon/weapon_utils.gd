@@ -44,6 +44,11 @@ static var player_weapons: Array[WeaponType] = [
 static var enemy_weapons: Array[WeaponType] = [
 	WeaponType.SINGLE_BLASTER,
 	WeaponType.DOUBLE_BLASTER,
+	WeaponType.SHOTGUN,
+	WeaponType.QUAD_BLASTER,
+	WeaponType.SINGLE_ROCKET,
+	WeaponType.DOUBLE_ROCKET,
+	WeaponType.LASER,
 ]
 
 static func get_weapon_path(type: WeaponType) -> String:

@@ -10,3 +10,7 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	super(delta)
 	pass
+
+func _on_tree_exiting() -> void:
+	#print('Rocket exited')
+	pass

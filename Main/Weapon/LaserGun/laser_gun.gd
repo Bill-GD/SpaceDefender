@@ -29,33 +29,34 @@ func _ready() -> void:
 	
 func _process(delta) -> void:
 	target_direction = to_global(Vector2.from_angle(parent.rotation))
-	if is_shooting:
-		time_shooting += delta
+	if not is_shooting: return
+	
+	time_shooting += delta
+	
+	# laser
+	ray_cast.target_position = ray_cast.to_local(target_direction).normalized() * - laser_length
+	beam.points[1] = ray_cast.target_position * laser_end_offset
+	$LaserEnd.global_position = to_global(ray_cast.target_position)
+	$LaserEnd.global_rotation = $LaserEnd.to_local(ray_cast.target_position).angle() * - 1
+	
+	# collision
+	if ray_cast.is_colliding():
+		var collision = ray_cast.get_collider()
+		if $DamageCooldown.is_stopped():
+			if collision is Enemy and from_player:
+				collision.take_damage(laser_damage)
+			if collision is Player and not from_player:
+				collision.take_damage(laser_damage / 3)
+			$DamageCooldown.start()
 		
-		# laser
-		ray_cast.target_position = ray_cast.to_local(target_direction).normalized() * - laser_length
-		beam.points[1] = ray_cast.target_position * laser_end_offset
-		$LaserEnd.global_position = to_global(ray_cast.target_position)
-		$LaserEnd.global_rotation = $LaserEnd.to_local(ray_cast.target_position).angle() * - 1
-		
-		# collision
-		if ray_cast.is_colliding():
-			var collision = ray_cast.get_collider()
-			if $DamageCooldown.is_stopped():
-				if collision is Enemy and from_player:
-					collision.take_damage(laser_damage)
-				if collision is Player and not from_player:
-					collision.take_damage(laser_damage / 3)
-				$DamageCooldown.start()
-			
-			var coll_point = ray_cast.get_collision_point()
-			beam.points[1] = beam.to_local(coll_point)
-			$LaserEnd.global_position = coll_point
-			$LaserEnd.global_rotation = ray_cast.get_collision_normal().angle()
-		
-		# stop attack
-		if Input.is_action_just_released("primary_attack"):
-			stop_attack()
+		var coll_point = ray_cast.get_collision_point()
+		beam.points[1] = beam.to_local(coll_point)
+		$LaserEnd.global_position = coll_point
+		$LaserEnd.global_rotation = ray_cast.get_collision_normal().angle()
+	
+	# stop attack
+	if Input.is_action_just_released("primary_attack"):
+		stop_attack()
 
 func shoot(_direction: Vector2, damage: float, _is_from_player: bool=true) -> void:
 	if is_shooting: return

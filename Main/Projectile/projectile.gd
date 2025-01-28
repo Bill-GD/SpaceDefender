@@ -7,12 +7,14 @@ extends Area2D
 @export var steer_force: float = 1
 ## Damage multiplier for ammo type
 @export var extra_damage: float = 1
+@export var knockback_force: float = 1
 
 var target: PhysicsBody2D = null
 var from_player: bool = true
 var direction: Vector2
-var velocity = Vector2.ZERO
+var velocity: Vector2 = Vector2.ZERO
 var damage: float = 0
+## Hoing rocket will fly straight if not actuvely seeking any enemy
 var chasing_target: bool = false
 
 func _ready() -> void:
@@ -34,7 +36,7 @@ func set_sprite_scale(new_scale: Vector2) -> void:
 func seek() -> Vector2:
 	var steer := Vector2.ZERO
 	if target and is_instance_valid(target):
-		var desired = (target.global_position - position).normalized() * speed
+		var desired := (target.global_position - position).normalized() * speed
 		steer = (desired - velocity).normalized() * steer_force
 	return steer
 

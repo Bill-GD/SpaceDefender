@@ -6,8 +6,8 @@ var accel: float = 2500
 var friction: float = 500
 
 func _ready() -> void:
-	update_stats()
 	super()
+	update_stats()
 
 func _physics_process(delta) -> void:
 	look_at(get_global_mouse_position())
@@ -33,7 +33,7 @@ func take_damage(damage_taken: float) -> void:
 
 func die() -> void:
 	super()
-	# emit player died signal -> handle game over
+	# TODO emit player died signal -> handle game over
 
 func init_weapon(weapon_type: WeaponUtils.WeaponType) -> void:
 	var new_weapon: Weapon = load(WeaponUtils.weapon_paths[weapon_type]).instantiate()

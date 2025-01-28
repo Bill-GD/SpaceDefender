@@ -12,17 +12,11 @@ var damage: float
 var shield: float
 
 func _ready() -> void:
-	get_base_stats(base_stats)
-	#print('Updating health of %s' % name)
-	#health_bar.set_max_value(health)
-	#health_bar.update_value(health)
+	speed = base_stats.base_speed
+	health = base_stats.base_health
+	damage = base_stats.base_damage
+	shield = base_stats.base_shield
 	pass
-
-func get_base_stats(stats: BasicStats) -> void:
-	speed = stats.base_speed
-	health = stats.base_health
-	damage = stats.base_damage
-	shield = stats.base_shield
 
 func die() -> void:
 	print_rich("[color=red]%s has died[/color]" % name)
@@ -30,16 +24,20 @@ func die() -> void:
 func take_damage(damage_taken: float) -> void:
 	$AnimationPlayer.play("hit_flash")
 	health -= damage_taken
+	# print_rich("[color=yellow]%s took %s damage, %s left[/color]" % [name, damage_taken, health])
+	
 	if health <= 0:
 		died.emit()
 		die()
-	
-	print_rich("[color=yellow]%s took %s damage, %s left[/color]" % [name, damage_taken, health])
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if not area is Projectile: return
 	area = area as Projectile
 	
-	if (area.from_player and self is Enemy) or (not area.from_player and self is Player):
+	if (area.from_player and self is Enemy) or (area.from_player and self is not Player):
+		var knockback: Vector2 = area.global_position - global_position
+		print_rich("Knockback: f=%s, v=%s" % [area.knockback_force, knockback])
+		velocity += knockback * area.knockback_force * 500
+		
 		take_damage(area.damage)
 		area.queue_free()
